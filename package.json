@@ -1,0 +1,86 @@
+{
+  "name": "hylix-windows",
+  "version": "0.3.4",
+  "private": true,
+  "description": "Hylix standalone Windows app",
+  "author": "Hylix",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --test tests/*.test.cjs",
+    "pack:windows": "electron-builder --win dir --x64",
+    "build:windows": "electron-builder --win nsis --x64",
+    "prepare:server": "node scripts/build-server.cjs",
+    "build:public": "node scripts/build-public.cjs"
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.hylix.desktop",
+    "productName": "Hylix",
+    "directories": {
+      "output": "dist-standalone"
+    },
+    "files": [
+      "src/**",
+      "ui/**",
+      "assets/**",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "artifactName": "Hylix-Setup-${version}-Windows-x64.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extraResources": [
+      {
+        "from": "bundle/server",
+        "to": "server",
+        "filter": [
+          "**/*",
+          "!node_modules/**/*",
+          "!.next-desktop/node_modules/**/*"
+        ]
+      },
+      {
+        "from": "bundle/server/node_modules",
+        "to": "server/node_modules",
+        "filter": [
+          "**/*",
+          "!.pnpm/**/*"
+        ]
+      },
+      {
+        "from": "bundle/server/.next-desktop/node_modules",
+        "to": "server/.next-desktop/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "afterPack": "scripts/verify-packed.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "electron-updater": "6.8.11"
+  }
+}
