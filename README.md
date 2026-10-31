@@ -41,3 +41,21 @@ The desktop application source is provided under the MIT License. Hylix branding
 
 ## Quick reopen (0.3.4)
 After the first launch, closing the cinema window keeps Hylix ready in the Windows tray. Reopening its shortcut restores the loaded catalog without a new server startup or page reload. Local media is paused and audio muted while hidden. Choose Quit Hylix from the tray or Hylix menu to stop the app and its owned local server completely. This does not add Hylix to Windows startup. First launch after a full quit/restart still requires the local server to start; a universal one-second cold-start time is not claimed.
+
+**Looking for a Small Sponsorship to Support My Coding Journey 🚀**
+
+Hi everyone!
+
+I'm a student developer from the Philippines, passionate about AI, programming, and building real-world applications.
+
+I've been teaching myself how to develop software, experimenting with AI models, and working on ambitious personal projects.
+
+Unfortunately, my budget is limited, and accessing professional development tools can be difficult.
+
+I'm looking for someone willing to offer mentorship, access to free developer resources, or a small sponsorship of around **$20 toward eligible AI coding tools**.
+
+Even a little support or advice would mean a lot to me.
+
+I'm happy to share my projects and demonstrate what I'm building.
+
+Thank you for supporting aspiring young developers! ❤️
